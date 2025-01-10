@@ -1009,16 +1009,16 @@ end
 
 -- @Jakku Night: Opens tree AFTER switching tabs:
 function onAddTab()
-	open_tree()
+	if config.GetGlobalOption("filemanager.openonstart") then open_tree() end
 end
 function onNextTab()
-	open_tree()
+	if config.GetGlobalOption("filemanager.openonstart") then open_tree() end
 end
 function onPreviousTab()
-	open_tree()
+	if config.GetGlobalOption("filemanager.openonstart") then open_tree() end
 end
 function onTabSwitchCmd()
-	open_tree()
+	if config.GetGlobalOption("filemanager.openonstart") then open_tree() end
 end
 
 -- Close current
@@ -1038,7 +1038,7 @@ end
 
 -- @Jakku Night: Opens a new tree when switching to a new tab after closing the previous one:
 function onQuit()
-	open_tree()
+	if config.GetGlobalOption("filemanager.openonstart") then open_tree() end
 end
 
 -- Close all
@@ -1111,7 +1111,7 @@ end
 
 -- On click, open at the click's y
 function preMousePress(view, event)
-	if view == tree_view then
+	if view == tree_view and event ~= nil then
 		local x, y = event:Position()
 		-- Fixes the y because softwrap messes with it
 		local new_x, new_y = tree_view:GetMouseClickLocation(x, y)
