@@ -1126,7 +1126,7 @@ end
 
 -- @Jakku Night: Opens a new tree if tab switched:
 function onMousePress(view, event)
-	if micro.CurTab() ~= tree_view:Tab() then
+	if tree_view ~= nil and micro.CurTab() ~= tree_view:Tab() then
 		micro.InfoBar():Message("Tab was Switched.")
 	end
 end
